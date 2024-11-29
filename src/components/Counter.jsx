@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Counter() {
+export default function Counter({ total, onClick }) {
   //let num = 0; 안 된다
   // 변경 가능. 변경 시 화면 업데이트 해줘
   const [count, setCount] = useState(0); // 상태 값 접근 가능한 변수 value, 업데이트 가능한 function 리턴
@@ -11,18 +11,19 @@ export default function Counter() {
 
   return (
     <div className='counter'>
-      <span className='number'>{count}</span>
+      <p className='number'>
+        {count} <span className='total'>/{total}</span>
+      </p>
       <button
         className='button'
         onClick={() => {
-          // setCount(count + 1);
-          // setCount(count + 1);
-          // setCount(count + 1);
+          setCount((prev) => prev + 1);
+          onClick();
           // js 클로져 관련.
           // count는 0이라고 저장 -> 1 그 다음도 0 + 1 = 1 결국 1만 증가
-          setCount((prev) => prev + 1); // prev 0
-          setCount((prev) => prev + 1); // prev 1
-          setCount((prev) => prev + 1); // prev 2
+          // setCount((prev) => prev + 1); // prev 0
+          // setCount((prev) => prev + 1); // prev 1
+          // setCount((prev) => prev + 1); // prev 2
           //
         }}
       >
